@@ -8,6 +8,7 @@ import NotFound from './pages/NotFound'
 export default function App() {
   return (
     <>
+    
       <RouteMeta />
       <Routes>
         <Route path="/" element={<LandingPage />} />
