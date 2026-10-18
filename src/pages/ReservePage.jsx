@@ -7,25 +7,10 @@ import Field from '../components/ui/Field'
 import CheckIcon from '../components/ui/CheckIcon'
 import { btnPrimary, btnOutline, btnOutlineSmall } from '../components/ui/buttonStyles'
 import { PACKAGES, SITE, formatNaira } from '../config/site'
+import { formatLongDate, todayISO } from '../utils/dates'
 import { whatsappLink } from '../utils/whatsapp'
 
 const EMPTY = { name: '', phone: '', email: '', weddingDate: '', location: '', notes: '' }
-
-// Today's date as YYYY-MM-DD in local time
-function todayISO() {
-  const d = new Date()
-  d.setMinutes(d.getMinutes() - d.getTimezoneOffset())
-  return d.toISOString().slice(0, 10)
-}
-
-function prettyDate(iso) {
-  return new Date(iso + 'T00:00').toLocaleDateString('en-NG', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
-}
 
 function validate(v) {
   const errors = {}
@@ -91,16 +76,17 @@ export default function ReservePage() {
       return
     }
 
+    // Required lines first; optional ones only when filled in.
     const lines = [
       `Hello ${SITE.name}, I'd like to reserve the ${pkg.name} (${formatNaira(pkg.price)}).`,
       '',
       `Name: ${values.name.trim()}`,
       `Phone: ${values.phone.trim()}`,
-      values.email && `Email: ${values.email.trim()}`,
-      `Wedding date: ${prettyDate(values.weddingDate)}`,
-      `Location: ${values.location.trim()}`,
-      values.notes.trim() && `Notes: ${values.notes.trim()}`,
-    ].filter((line) => line !== false && line !== undefined && line !== '' || line === '')
+    ]
+    if (values.email.trim()) lines.push(`Email: ${values.email.trim()}`)
+    lines.push(`Wedding date: ${formatLongDate(values.weddingDate)}`)
+    lines.push(`Location: ${values.location.trim()}`)
+    if (values.notes.trim()) lines.push(`Notes: ${values.notes.trim()}`)
 
     const link = whatsappLink(lines.join('\n'))
     if (!link) {
