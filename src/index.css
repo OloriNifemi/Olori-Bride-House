@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* ============================================================
+   OLÓRI BRIDE HOUSE — THEME TOKENS
+   Use them in classes like: bg-ivory, text-cocoa, border-line
+   ============================================================ */
+@theme {
+  /* Backgrounds & surfaces */
+  --color-ivory: #FBF8F3;       /* main app background */
+  --color-cream: #FFFDF9;       /* cards, modals */
+  --color-champagne: #F1E8DB;   /* secondary surfaces, sidebar */
+  --color-taupe: #CDBDAA;       /* subtle dividers, disabled */
+  --color-line: #E8DDCF;        /* borders */
+
+  /* Text */
+  --color-cocoa: #3B2A25;       /* main text */
+  --color-muted: #6E5D55;       /* secondary text (still readable) */
+
+  /* Accents */
+  --color-blush: #E9C9C2;       /* soft accent backgrounds */
+  --color-rose: #9C5B57;        /* accent text, active links */
+  --color-rose-deep: #7E4642;   /* hover state for rose */
+  --color-sage: #DCE5D6;        /* success / completed background */
+  --color-sage-deep: #4F6B4B;   /* success text */
+  --color-amber: #F4E3C4;       /* gentle warning background (overdue) */
+  --color-amber-deep: #8A5A1C;  /* warning text */
+  --color-gold: #B89A5E;        /* tiny luxury details only */
+
+  /* Fonts */
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", system-ui, sans-serif;
+
+  /* Soft shadow for cards */
+  --shadow-soft: 0 1px 2px rgb(59 42 37 / 0.04), 0 8px 24px rgb(59 42 37 / 0.06);
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-ivory text-cocoa font-sans;
+    font-weight: 400;
+  }
+  h1, h2, h3 {
+    @apply font-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  /* Numbers line up neatly in tables and money columns */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-rose);
+    outline-offset: 2px;
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
