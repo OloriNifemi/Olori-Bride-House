@@ -1,24 +1,15 @@
 import { Routes, Route } from 'react-router'
-import AppShell from './components/layout/AppShell'
-import ComingSoon from './pages/ComingSoon'
+import LandingPage from './pages/LandingPage'
+import ReservePage from './pages/ReservePage'
 import NotFound from './pages/NotFound'
-import { NAV_ITEMS } from './config/navigation'
 
-// All the pages of the app. Every page sits inside AppShell (sidebar + top bar).
-// As we build each module, its <ComingSoon> is replaced with the real page.
+// The pages of the website.
 export default function App() {
   return (
     <Routes>
-      <Route element={<AppShell />}>
-        {NAV_ITEMS.map((item) =>
-          item.path === '/' ? (
-            <Route key={item.path} index element={<ComingSoon item={item} />} />
-          ) : (
-            <Route key={item.path} path={item.path.slice(1)} element={<ComingSoon item={item} />} />
-          )
-        )}
-        <Route path="*" element={<NotFound />} />
-      </Route>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/reserve/:packageId" element={<ReservePage />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }

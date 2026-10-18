@@ -1,40 +1,35 @@
 @import "tailwindcss";
 
 /* ============================================================
-   OLÓRI BRIDE HOUSE — THEME TOKENS
-   Use them in classes like: bg-ivory, text-cocoa, border-line
+   OLÓRI BRIDE HOUSE — ROSE THEME
+   Use in classes like: bg-blush-50, text-plum, bg-wine, border-line
    ============================================================ */
 @theme {
-  /* Backgrounds & surfaces */
-  --color-ivory: #FBF8F3;       /* main app background */
-  --color-cream: #FFFDF9;       /* cards, modals */
-  --color-champagne: #F1E8DB;   /* secondary surfaces, sidebar */
-  --color-taupe: #CDBDAA;       /* subtle dividers, disabled */
-  --color-line: #E8DDCF;        /* borders */
+  /* Backgrounds */
+  --color-blush-50: #FFF9F7;    /* page background */
+  --color-blush-100: #F8E9E6;   /* soft panels, featured card */
+  --color-blush-200: #F3DCD8;   /* photo placeholders */
+  --color-blush-300: #EFD3D0;   /* photo placeholders (deeper) */
+
+  /* Borders */
+  --color-line: #F1E2E0;
+  --color-line-strong: #E3C3C8;
 
   /* Text */
-  --color-cocoa: #3B2A25;       /* main text */
-  --color-muted: #6E5D55;       /* secondary text (still readable) */
+  --color-plum: #4A2230;        /* headings and main text */
+  --color-plum-soft: #6E5560;   /* secondary text */
+  --color-mauve: #9A6E7A;       /* prices */
 
   /* Accents */
-  --color-blush: #E9C9C2;       /* soft accent backgrounds */
-  --color-rose: #9C5B57;        /* accent text, active links */
-  --color-rose-deep: #7E4642;   /* hover state for rose */
-  --color-sage: #DCE5D6;        /* success / completed background */
-  --color-sage-deep: #4F6B4B;   /* success text */
-  --color-amber: #F4E3C4;       /* gentle warning background (overdue) */
-  --color-amber-deep: #8A5A1C;  /* warning text */
-  --color-gold: #B89A5E;        /* tiny luxury details only */
+  --color-rose: #A0485E;        /* small accent text, icons */
+  --color-wine: #8E3B52;        /* buttons, active states */
+  --color-wine-deep: #6E2F42;   /* button hover */
 
-  /* Fonts */
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Jost", system-ui, sans-serif;
+  /* Font */
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
 
-  /* Soft shadow for cards */
-  --shadow-soft: 0 1px 2px rgb(59 42 37 / 0.04), 0 8px 24px rgb(59 42 37 / 0.06);
-
-  /* Gentle entrance animation — use with the class: animate-fade-in */
-  --animate-fade-in: fade-in 0.3s ease-out both;
+  /* Gentle entrance animation — class: animate-fade-in */
+  --animate-fade-in: fade-in 0.35s ease-out both;
 
   @keyframes fade-in {
     from { opacity: 0; transform: translateY(6px); }
@@ -42,35 +37,27 @@
   }
 }
 
-/* ============================================================
-   BASE STYLES
-   ============================================================ */
 @layer base {
   html {
+    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
   }
   body {
-    @apply bg-ivory text-cocoa font-sans;
-    font-weight: 400;
+    @apply bg-blush-50 text-plum font-sans;
+    font-size: 15px;
+    line-height: 1.65;
   }
-  h1, h2, h3 {
-    @apply font-serif;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-  /* Numbers line up neatly in tables and money columns */
-  .tabular {
-    font-variant-numeric: tabular-nums;
-  }
-  /* Visible keyboard focus everywhere */
+  /* Clear rose outline for keyboard users */
   :focus-visible {
     outline: 2px solid var(--color-rose);
-    outline-offset: 2px;
+    outline-offset: 3px;
+    border-radius: 12px;
   }
 }
 
 /* Respect users who prefer less motion */
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
