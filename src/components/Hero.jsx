@@ -82,7 +82,7 @@ export default function Hero({ onViewPricing }) {
             width="400"
             height="450"
             decoding="async"
-            className="h-full w-full rounded-2xl object-cover"
+            className="h-full w-full rounded-b-2xl object-cover"
           />
         </div>
 
