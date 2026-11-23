@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { ChevronLeft, CircleCheck, MessageCircle } from 'lucide-react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
 import Field from '../components/ui/Field'
 import CheckIcon from '../components/ui/CheckIcon'
 import { btnPrimary, btnOutline, btnOutlineSmall } from '../components/ui/buttonStyles'
@@ -202,17 +200,11 @@ export default function ReservePage() {
   )
 }
 
-// Shared page frame: header with back link, content, footer.
+// Shared page frame. The header and footer now come from the layout in App.jsx.
 function PageFrame({ children }) {
   return (
-    <div className="flex min-h-screen flex-col">
-      <div className="mx-auto w-full max-w-[1040px] flex-1 px-6 pb-24 pt-7">
-        <div className="mb-10">
-          <Header action={backLink} />
-        </div>
-        {children}
-      </div>
-      <Footer />
+    <div className="mx-auto w-full max-w-[1040px] px-6 pb-24 pt-10">
+      {children}
     </div>
   )
 }
