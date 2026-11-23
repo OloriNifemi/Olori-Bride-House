@@ -3,14 +3,17 @@ import Bridal from '../assets/Bridal.jpg'
 import BlockOne from '../assets/BlockOne.jpg'
 import BlockTwo from '../assets/BlockTwo.jpg'
 
+const focusRing =
+  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose'
+
 export default function Hero({ onViewPricing }) {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="grid items-center gap-10 pb-16 pt-8 sm:pt-12 lg:grid-cols-[1.08fr_1fr] lg:gap-0 lg:pb-24"
+      className="grid items-center gap-10 pb-16 pt-8 sm:pt-12 lg:grid-cols-[1.1fr_1fr] lg:gap-0 lg:pb-24"
     >
       {/* Text panel */}
-      <div className="rounded-r-[4rem] bg-blush-100 px-6 py-12 sm:px-12 sm:py-16 lg:rounded-r-full lg:py-24 lg:pl-14 lg:pr-32">
+      <div className="rounded-r-[4rem] bg-blush-100 px-6 py-12 sm:px-12 sm:py-16 lg:rounded-r-full lg:pb-28 lg:pl-12 lg:pr-28 lg:pt-24 xl:pl-14 xl:pr-36">
         <div className="max-w-[520px]">
           <p className="mb-5 text-[15px] font-medium tracking-wide text-rose">
             Luxury bridal concierge in Lagos
@@ -31,30 +34,30 @@ export default function Hero({ onViewPricing }) {
             essentials, so you can enjoy every moment.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="mt-8 flex w-full flex-col gap-3 sm:w-fit">
             <a
               href="#contact"
-              className={`${btnPrimary} justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose`}
+              className={`${btnPrimary} w-full justify-center whitespace-nowrap ${focusRing}`}
             >
               Book a free consultation
             </a>
             <a
               href="#services-pricing"
               onClick={onViewPricing}
-              className={`${btnOutline} justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose`}
+              className={`${btnOutline} w-full justify-center whitespace-nowrap ${focusRing}`}
             >
               Explore our packages
             </a>
           </div>
 
-          <p className="mt-8 border-t border-rose/20 pt-5 text-sm font-medium text-plum">
+          <p className="mt-8 max-w-[34ch] border-t border-rose/20 pt-5 text-sm font-medium leading-6 text-plum">
             Your day. Your moments. Our attention to every detail.
           </p>
         </div>
       </div>
 
-      {/* Photo collage — overlaps the curve of the panel on large screens */}
-      <div className="relative z-10 lg:-ml-24 lg:pr-4">
+      {/* Photo collage: overlaps the panel's curve only on xl screens */}
+      <div className="relative z-10 lg:pr-4 xl:-ml-16">
         <div className="grid aspect-[5/6] grid-cols-[1.35fr_1fr] grid-rows-2 gap-3 sm:aspect-[6/5] sm:gap-4 lg:aspect-auto lg:h-[580px]">
           <img
             src={Bridal}
